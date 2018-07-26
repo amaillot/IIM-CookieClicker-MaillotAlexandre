@@ -1,12 +1,12 @@
 <template>
   <div id="app">
     <div class="wrapper-left">
-    <Counter></Counter>
-    <Cookie></Cookie>
+    <Counter id="counter"></Counter>
+    <Cookie id="cookie"></Cookie>
     </div>
     <div class="wrapper-right">
-    <CookieCursor></CookieCursor>
-    <CookieGrandma></CookieGrandma>
+    <CookieCursor id="cursor"></CookieCursor>
+    <CookieGrandma id="grandma"></CookieGrandma>
     </div>
   </div>
 </template>
@@ -43,22 +43,53 @@ export default {
 </script>
 
 <style lang="scss">
+    html, body{
+        height: 100%;
+        padding: 0;
+        margin: 0;
+    }
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+    height:100%;
 }
 .wrapper-left{
     width: 50%;
     height: 100%;
     float: left;
+    background-image: url("assets/3345451-cookies-donuts-batch-allsorts-variety.jpg");
+    background-size: cover;
 }
 .wrapper-right{
     width: 50%;
     height: 100%;
     float: right;
+    background-color: aliceblue;
+}
+#cookie{
+  margin-top: 80px;
+    cursor: pointer;
+}
+#counter{
+    margin-top: 100px;
+    color: white;
+    font-size: 40px;
+}
+#cursor, #grandma{
+    width: 80%;
+    margin: 20px auto 0 auto;
+    height: 100px;
+    font-size: 30px;
+    padding: 20px;
+    border: solid 2px black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#cursor{
+    margin-top: 80px;
 }
 </style>

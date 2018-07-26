@@ -34,4 +34,8 @@
         background-size: contain;
         margin: 0 auto;
     }
+.cookie:active{
+        height: 310px;
+        width: 310px;
+}
 </style>

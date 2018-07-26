@@ -1,6 +1,8 @@
 <template>
     <div>
-        <div @click="cursor" class="cursor"> Cursor : {{cursorCount}}, cost : {{cost}} </div>
+        <div v-if="count >= cost" @click="cursor" class="cursor"> Cursor : {{cursorCount}}, cost : {{cost}} </div>
+        <div class="cursor disabled" v-else> Cursor : {{cursorCount}}, cost : {{cost}} </div>
+
     </div>
 </template>
 
@@ -10,7 +12,7 @@
         name: 'CookieCursor',
         data () {
             return {
-                cursorCount : 0,
+                cursorCount : this.$store.state.cursorCount,
                 cookieCount: 0,
                 cost : 15,
                 interval : undefined
@@ -18,6 +20,12 @@
         },
         created() {
             this.interval = setInterval(this.countCookie, 10000);
+            if (this.cursorCount !== 0) {
+                for (let i = 0; i < this.cursorCount; i++) {
+                    this.cost += (this.cost * 15 / 100)
+                }
+            }
+            this.cost = Math.round(this.cost)
         },
         methods: {
             //...mapActions["incrementCount"],
@@ -27,10 +35,12 @@
             },
             cursor () {
                 this.$store.dispatch("buyItem", (this.cost));
+                this.$store.dispatch("addCursor");
                 this.cursorCount++;
                 this.cost = this.cost + (15/100*this.cost);
                 this.cost = Math.round(this.cost);
-            }
+            },
+
 
         },
         computed: {
@@ -43,5 +53,8 @@
 <style>
     .cursor{
         cursor: pointer;
+    }
+    .disabled{
+        color: darkgrey;
     }
 </style>
