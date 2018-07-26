@@ -1,30 +1,47 @@
 <template>
     <div>
-        <button @click="cursor"></button>
+        <div @click="cursor" class="cursor"> Cursor : {{cursorCount}}, cost : {{cost}} </div>
     </div>
 </template>
 
 <script>
+    import {mapActions, mapGetters} from 'vuex';
     export default {
-        name: 'Cursor',
+        name: 'CookieCursor',
         data () {
             return {
-                count: 0
+                cursorCount : 0,
+                cookieCount: 0,
+                cost : 15,
+                interval : undefined
             }
         },
+        created() {
+            this.interval = setInterval(this.countCookie, 10000);
+        },
         methods: {
+            //...mapActions["incrementCount"],
+            countCookie() {
+                let cursor = this.cursorCount;
+                this.$store.dispatch("incrementCountCursor", cursor);
+            },
             cursor () {
-                this.count++
+                this.$store.dispatch("buyItem", (this.cost));
+                this.cursorCount++;
+                this.cost = this.cost + (15/100*this.cost);
+                this.cost = Math.round(this.cost);
             }
+
+        },
+        computed: {
+            ...mapGetters({
+                count : 'count'
+            })
         }
     }
 </script>
 <style>
-    .cookie{
-        height:300px;
-        width:300px;
-        background-image: url("../assets/PerfectCookie.png");
-        background-size: contain;
-        margin: 0 auto;
+    .cursor{
+        cursor: pointer;
     }
 </style>

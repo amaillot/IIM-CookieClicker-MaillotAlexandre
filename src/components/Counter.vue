@@ -1,7 +1,6 @@
 <template>
     <div>
         <span class="count">{{ count }}</span>
-        <div class="cookie" @click="increment"></div>
     </div>
 </template>
 
@@ -28,12 +27,3 @@
         }
     }
 </script>
-<style>
-    .cookie{
-        height:300px;
-        width:300px;
-        background-image: url("../assets/PerfectCookie.png");
-        background-size: contain;
-        margin: 0 auto;
-    }
-</style>
