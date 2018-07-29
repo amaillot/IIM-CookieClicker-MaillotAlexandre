@@ -28,7 +28,6 @@
             this.cost = Math.round(this.cost)
         },
         methods: {
-            //...mapActions["incrementCount"],
             countCookie() {
                 let cursor = this.cursorCount;
                 this.$store.dispatch("incrementCountCursor", cursor);

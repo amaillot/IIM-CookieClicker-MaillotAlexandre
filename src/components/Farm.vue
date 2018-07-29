@@ -1,26 +1,26 @@
 <template>
     <div>
-        <div v-if="count >= cost" @click="grandma" class="grandma"> Grandma : {{grandmaCount}}, cost : {{cost}} </div>
-        <div class="grandma disabled" v-else> Grandma : {{grandmaCount}}, cost : {{cost}} </div>
+        <div v-if="count >= cost" @click="farm" class="farm"> Farm : {{farmCount}}, cost : {{cost}} </div>
+        <div class="farm disabled" v-else> Farm : {{farmCount}}, cost : {{cost}} </div>
     </div>
 </template>
 
 <script>
     import {mapActions, mapGetters} from 'vuex';
     export default {
-        name: 'CookieGrandma',
+        name: 'Cookiefarm',
         data () {
             return {
-                grandmaCount : this.$store.state.grandmaCount,
+                farmCount : this.$store.state.farmCount,
                 cookieCount: 0,
-                cost : 100,
+                cost : 1100,
                 interval : undefined,
             }
         },
         created() {
-            this.interval = setInterval(this.countCookie, 1000);
-            if (this.grandmaCount !== 0) {
-                for (let i = 0; i < this.grandmaCount; i++) {
+            this.interval = setInterval(this.countCookie, 1000/8);
+            if (this.farmCount !== 0) {
+                for (let i = 0; i < this.farmCount; i++) {
                     this.cost += (this.cost * 15 / 100)
                 }
             }
@@ -28,13 +28,13 @@
         },
         methods: {
             countCookie() {
-                let grandma = this.grandmaCount;
-                this.$store.dispatch("incrementCountGrandma", grandma);
+                let farm = this.farmCount;
+                this.$store.dispatch("incrementCountFarm", farm);
             },
-            grandma () {
+            farm () {
                 this.$store.dispatch("buyItem", (this.cost));
-                this.$store.dispatch("addGrandma");
-                this.grandmaCount++;
+                this.$store.dispatch("addFarm");
+                this.farmCount++;
                 this.cost = this.cost + (15/100*this.cost);
                 this.cost = Math.round(this.cost);
             }
@@ -48,7 +48,7 @@
     }
 </script>
 <style>
-    .grandma{
+    .farm{
         cursor: pointer;
     }
     .disabled{

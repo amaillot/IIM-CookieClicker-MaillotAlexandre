@@ -9,6 +9,7 @@ const store = new Vuex.Store({
     intervalCursor: 0,
     cursorCount: 0,
     grandmaCount: 0,
+    farmCount: 0,
   },
   mutations: {
     "SET_COUNT": (state, newTotal) => {
@@ -36,6 +37,10 @@ const store = new Vuex.Store({
           let newCount = state.countTotal + count;
           commit("SET_COUNT", newCount);
       },
+      incrementCountFarm({commit, state}, count){
+          let newCount = state.countTotal + count;
+          commit("SET_COUNT", newCount);
+      },
     buyItem({commit, state}, cost){
         let newCount = state.countTotal - cost;
         commit("SET_COUNT", newCount);
@@ -45,6 +50,9 @@ const store = new Vuex.Store({
     },
     addCursor({state}) {
           state.cursorCount++;
+      },
+    addFarm({state}) {
+          state.farmCount++;
       }
   },
   getters: {

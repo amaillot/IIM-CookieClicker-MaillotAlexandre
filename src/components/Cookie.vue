@@ -1,5 +1,6 @@
 <template>
         <div class="cookie" @click="increment"></div>
+
 </template>
 
 <script>
@@ -8,7 +9,7 @@
         name: 'Cookie',
         data () {
             return {
-                name : "okay"
+                name : "okay",
             }
         },
         methods: {

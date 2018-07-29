@@ -7,6 +7,8 @@
     <div class="wrapper-right">
     <CookieCursor id="cursor"></CookieCursor>
     <CookieGrandma id="grandma"></CookieGrandma>
+    <CookieFarm id="farm"></CookieFarm>
+
     </div>
   </div>
 </template>
@@ -18,6 +20,8 @@ import CookieCursor from "./components/Cursor.vue";
 import Cookie from "./components/Cookie.vue";
 import CursorPointer from "./components/CursorPointer.vue";
 import CookieGrandma from "./components/Grandma.vue";
+import CookieFarm from "./components/Farm.vue";
+
 export default {
   name: "app",
   components: {
@@ -27,6 +31,7 @@ export default {
     Cookie,
     CursorPointer,
     CookieGrandma,
+    CookieFarm,
   },
   data() {
       return {
@@ -78,7 +83,7 @@ export default {
     color: white;
     font-size: 40px;
 }
-#cursor, #grandma{
+#cursor, #grandma, #farm{
     width: 80%;
     margin: 20px auto 0 auto;
     height: 100px;
