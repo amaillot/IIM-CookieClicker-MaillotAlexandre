@@ -14,6 +14,7 @@ build:
             - ./node_modules
     only:
         - master
+
 #
 #tests:
 #  stage: tests
