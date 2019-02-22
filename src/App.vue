@@ -14,22 +14,18 @@
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
 import Counter from "./components/Counter.vue";
 import CookieCursor from "./components/Cursor.vue";
 import Cookie from "./components/Cookie.vue";
-import CursorPointer from "./components/CursorPointer.vue";
 import CookieGrandma from "./components/Grandma.vue";
 import CookieFarm from "./components/Farm.vue";
 
 export default {
   name: "app",
   components: {
-    HelloWorld,
     Counter,
     CookieCursor,
     Cookie,
-    CursorPointer,
     CookieGrandma,
     CookieFarm
   },
