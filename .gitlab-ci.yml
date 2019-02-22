@@ -1,0 +1,44 @@
+stages:
+  - build
+  - tests
+  - deploy
+
+build:
+    stage: build
+    image: node
+    script:
+    - npm install
+    - npm build
+    cache:
+        paths:
+            - ./node_modules
+    only:
+        - master
+#
+#tests:
+#  stage: tests
+#  script:
+#    - npm install
+#    - npm run test
+#  cache:
+#    paths:
+#      - ./node_modules
+#  only:
+#    - master
+#
+#deploy:
+#  stage: deploy
+#  image: ruby:2.6
+#  script:
+#    - apt-get update -qy
+#    - apt-get install -yqq ruby ruby-dev nodejs --silent
+#    - dpl --provider=heroku --app=$HEROKU_APP --api-key=$HEROKU_KEY --skip_cleanup=true
+#  only:
+#    - master
+#
+#    - npm install
+#  cache:
+#    paths:
+#      - ./node_modules
+#  only:
+#    - master
